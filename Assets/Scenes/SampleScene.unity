@@ -397,7 +397,7 @@ MonoBehaviour:
   leftRotation: {x: 0, y: 0, z: 0.38268346, w: 0.9238795}
   rightRotation: {x: 0, y: 0, z: 0.3826835, w: -0.9238795}
   moveSpeed: 10
-  rotationSpeed: 4
+  rotationSpeed: 6
 --- !u!50 &1237248308
 Rigidbody2D:
   serializedVersion: 5
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 2108413623}
   - component: {fileID: 2108413620}
   m_Layer: 0
-  m_Name: FallingObjectTest
+  m_Name: FallingObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -721,7 +721,7 @@ Transform:
   m_GameObject: {fileID: 2108413619}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: 0}
+  m_LocalPosition: {x: -3, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
