@@ -38,18 +38,25 @@ public class FallingObject : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Player p = collision.GetComponent<Player>();
+
+            if (p == null) return;
+
             switch (type)
             {
                 case ObjectType.Collectible:
-                    // Add collectible
+                    p.Collect();
                     break;
                 case ObjectType.Enemy:
-                    // Damage player
+                    p.TakeDamage();
                     break;
             }
+
+            Destroy(gameObject);
+
         } else if (collision.CompareTag("ObjectCollector"))
         {
             Destroy(gameObject);
-        } else return;
+        } 
     }
 }
