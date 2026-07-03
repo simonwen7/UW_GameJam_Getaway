@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public enum ObjectType
@@ -20,10 +21,24 @@ public class FallingObject : MonoBehaviour
     [SerializeField]
     private float maxFallSpeed;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Animator anim;
+    private float animDuration;
+
+    void Awake()
     {
-        
+        if (type == ObjectType.Collectible)
+        {
+            anim = GetComponent<Animator>();
+            AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
+
+            foreach (AnimationClip  clip in clips)
+            {
+                if (clip.name == "suitcaseCollected")
+                {
+                    animDuration = clip.length;
+                }
+            }
+        }
     }
 
     void FixedUpdate()
@@ -36,6 +51,8 @@ public class FallingObject : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        BoxCollider2D bc = GetComponent<BoxCollider2D>();
+        bc.enabled = false;
         if (collision.CompareTag("Player"))
         {
             Player p = collision.GetComponent<Player>();
@@ -45,18 +62,27 @@ public class FallingObject : MonoBehaviour
             switch (type)
             {
                 case ObjectType.Collectible:
+                    maxFallSpeed = 8f;
                     p.Collect();
+                    StartCoroutine(playCollectedAnimation());
                     break;
                 case ObjectType.Enemy:
                     p.TakeDamage();
+                    Destroy(gameObject);
                     break;
-            }
-
-            Destroy(gameObject);
-
+            } 
         } else if (collision.CompareTag("ObjectCollector"))
         {
             Destroy(gameObject);
         } 
+    }
+
+    IEnumerator playCollectedAnimation()
+    {
+        anim.SetTrigger("Collected");
+        
+        yield return new WaitForSeconds(animDuration);
+
+        Destroy(gameObject);
     }
 }
