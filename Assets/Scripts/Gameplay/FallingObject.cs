@@ -47,6 +47,9 @@ public class FallingObject : MonoBehaviour
                     // Damage player
                     break;
             }
-        }
+        } else if (collision.CompareTag("ObjectCollector"))
+        {
+            Destroy(gameObject);
+        } else return;
     }
 }
