@@ -9,9 +9,13 @@ public class Player : MonoBehaviour
     [Header("Collectible Settings")]
     private int collectiblesObtained;
 
+    [SerializeField]
+    private UIController UIController;
+
     public void Collect()
     {
         collectiblesObtained++;
+        UIController.UpdateCounter(collectiblesObtained);
     }
 
     public void TakeDamage()

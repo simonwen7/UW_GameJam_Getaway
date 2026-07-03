@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private GameOverUIController gameOverUIController;
+    private UIController UIController;
 
     public static GameManager Instance {get; private set;}
 
@@ -21,6 +21,6 @@ public class GameManager : MonoBehaviour
 
         isGameOver = true;
 
-        gameOverUIController.Activate();
+        UIController.ActivateGameOverUI();
     }
 }
