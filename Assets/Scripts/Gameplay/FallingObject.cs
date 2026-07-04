@@ -68,6 +68,7 @@ public class FallingObject : MonoBehaviour
                     break;
                 case ObjectType.Enemy:
                     p.TakeDamage();
+                    CameraShake.Instance?.Shake();
                     Destroy(gameObject);
                     break;
             } 
