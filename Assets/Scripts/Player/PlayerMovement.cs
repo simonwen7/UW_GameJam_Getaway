@@ -21,7 +21,16 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GameManager.Instance.isLevelCompleted) return;
+        if (GameManager.Instance.isLevelCompleted)
+        {
+            if (transform.rotation != Quaternion.identity)
+            {
+                rb.linearVelocityX = 0;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, Time.fixedDeltaTime * rotationSpeed);    
+            }
+            
+            return;
+        }
 
         rb.linearVelocityX = horizontal * moveSpeed;
 
