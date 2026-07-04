@@ -64,13 +64,18 @@ public class FallingObject : MonoBehaviour
                 case ObjectType.Collectible:
                     maxFallSpeed = 8f;
                     p.Collect();
+                    GameFeedback.Instance?.PlayCollectFeedback();
                     StartCoroutine(playCollectedAnimation());
                     break;
+
                 case ObjectType.Enemy:
                     p.TakeDamage();
+                    CameraShake.Instance?.Shake();
+                    GameFeedback.Instance?.PlayHitFeedback();
                     Destroy(gameObject);
                     break;
-            } 
+            }
+            
         } else if (collision.CompareTag("ObjectCollector"))
         {
             Destroy(gameObject);
