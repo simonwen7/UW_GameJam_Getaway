@@ -23,6 +23,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Heal()
+    {
+        if (health < 3)
+        {
+            health++;
+        }
+    }
+
     public void TakeDamage()
     {
         health--;

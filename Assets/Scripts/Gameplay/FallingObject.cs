@@ -4,7 +4,8 @@ using UnityEngine;
 public enum ObjectType
 {
     Collectible,
-    Enemy
+    Enemy,
+    Heart
 }
 
 public class FallingObject : MonoBehaviour
@@ -72,6 +73,11 @@ public class FallingObject : MonoBehaviour
                     p.TakeDamage();
                     CameraShake.Instance?.Shake();
                     GameFeedback.Instance?.PlayHitFeedback();
+                    Destroy(gameObject);
+                    break;
+
+                case ObjectType.Heart:
+                    p.Heal();
                     Destroy(gameObject);
                     break;
             }
