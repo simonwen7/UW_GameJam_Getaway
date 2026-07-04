@@ -19,14 +19,10 @@ public class PlayerMovement : MonoBehaviour
 
     private float horizontal;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     void FixedUpdate()
     {
+        if (GameManager.Instance.isLevelCompleted) return;
+
         rb.linearVelocityX = horizontal * moveSpeed;
 
         if (rb.linearVelocityX > 0)

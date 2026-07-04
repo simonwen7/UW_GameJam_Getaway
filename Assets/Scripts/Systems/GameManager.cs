@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public bool isGameOver {get; private set;}
 
+    public bool isLevelCompleted {get; private set;}
+
 
     void Awake()
     {
@@ -22,5 +24,14 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
 
         UIController.ActivateGameOverUI();
+    }
+
+    public void LevelCompleted()
+    {
+        if (isLevelCompleted) return;
+
+        isLevelCompleted = true;
+
+        UIController.ActivateLevelCompletedUI();
     }
 }

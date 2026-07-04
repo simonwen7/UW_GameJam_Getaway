@@ -30,6 +30,11 @@ public class Player : MonoBehaviour
         {
             BackgroundShifter.isTransition = true;
         }
+
+        if (collectiblesObtained == 25)
+        {
+            GameManager.Instance.LevelCompleted();
+        }
     }
 
     public void Heal()

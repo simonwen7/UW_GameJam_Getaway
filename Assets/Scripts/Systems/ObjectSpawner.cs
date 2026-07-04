@@ -28,7 +28,7 @@ public class ObjectSpawner : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.isGameOver) return;
+        if (GameManager.Instance.isGameOver || GameManager.Instance.isLevelCompleted) return;
 
         currentTime += Time.deltaTime;
 

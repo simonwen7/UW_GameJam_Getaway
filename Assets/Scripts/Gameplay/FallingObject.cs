@@ -24,6 +24,8 @@ public class FallingObject : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameManager.Instance.isLevelCompleted || GameManager.Instance.isGameOver) Destroy(gameObject);
+
         if (Mathf.Abs(rb.linearVelocityY) > maxFallSpeed)
         {
             rb.linearVelocityY = -maxFallSpeed;
@@ -54,6 +56,7 @@ public class FallingObject : MonoBehaviour
 
                 case ObjectType.Heart:
                     p.Heal();
+                    // TODO: Add HealFeedback
                     break;
             }
             
