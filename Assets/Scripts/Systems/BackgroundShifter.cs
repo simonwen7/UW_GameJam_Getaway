@@ -22,7 +22,7 @@ public class BackgroundShifter : MonoBehaviour
 
         if (transform.position.y != targetPos.y)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * transitionSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * transitionSpeed);
         }
     }
 }
