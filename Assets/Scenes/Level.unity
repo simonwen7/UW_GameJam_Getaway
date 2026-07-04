@@ -2611,11 +2611,13 @@ MonoBehaviour:
   objects:
   - {fileID: 61441807552793163, guid: bb3492a411d8981489b17e8ea5e1e5fe, type: 3}
   - {fileID: 61441807552793163, guid: 931187f49b803784baf8ab7f6d8c500b, type: 3}
+  - {fileID: 61441807552793163, guid: f869de10a31cf1d47ab83a0e2c20b797, type: 3}
   spawnPoints:
   - {x: -3, y: 9, z: -1}
   - {x: 0, y: 9, z: -1}
   - {x: 3, y: 9, z: -1}
   timeBetweenSpawns: 1
+  weights: 040000000500000001000000
 --- !u!4 &1891699054
 Transform:
   m_ObjectHideFlags: 0

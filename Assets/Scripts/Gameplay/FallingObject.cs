@@ -32,8 +32,6 @@ public class FallingObject : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        BoxCollider2D bc = GetComponent<BoxCollider2D>();
-        bc.enabled = false;
         if (collision.CompareTag("Player"))
         {
             Player p = collision.GetComponent<Player>();

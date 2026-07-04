@@ -11,9 +11,20 @@ public class ObjectSpawner : MonoBehaviour
     private Vector3[] spawnPoints;
     [SerializeField]
     private float timeBetweenSpawns;
+    [SerializeField]
+    private int[] weights;
 
     private float currentTime;
 
+    private int totalWeight;
+
+    void Awake()
+    {
+        for (int i = 0; i < weights.Length; i++)
+        {
+            totalWeight += weights[i];
+        }
+    }
 
     void Update()
     {
@@ -30,6 +41,19 @@ public class ObjectSpawner : MonoBehaviour
 
     void Spawn()
     {
-        Instantiate(objects[Random.Range(0, objects.Length)], spawnPoints[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
+        int n = Random.Range(0, totalWeight);
+
+        int cumulative = 0;
+
+        for (int i = 0; i < objects.Length; i++)
+        {
+            cumulative += weights[i];
+
+            if (n < cumulative)
+            {
+                Instantiate(objects[i], spawnPoints[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
+                return;
+            }
+        }
     }
 }
